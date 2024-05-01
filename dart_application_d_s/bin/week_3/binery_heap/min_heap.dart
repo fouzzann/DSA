@@ -45,6 +45,7 @@ class Minheap{
   }
   dispay(){
     print('heap elemnts are $heap');
+    
   }
 
 }
@@ -53,7 +54,7 @@ class Minheap{
   main(){
     Minheap value= Minheap();
     value.inst(1);
-    value.inst(2);
+    value.inst(2); 
     value.inst(3);
     value.inst(4);
     value.delete(1);
