@@ -15,6 +15,11 @@ class Minheap{
   }
  }
 
+ inst(int value){
+    heap.add(value);
+    heapyfyup(heap.length -1);
+  }
+
  heapyfydown(int index){
     int smallest = index;
     int leftchild = 2* index +1;
@@ -31,12 +36,6 @@ class Minheap{
     } 
      
   }
-  
-  inst(int value){
-    heap.add(value);
-    heapyfyup(heap.length -1);
-  }
-
   delete( int value){
     int index = heap.indexOf(value);
     heap[index] = heap.last;
