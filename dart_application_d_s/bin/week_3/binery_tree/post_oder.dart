@@ -45,7 +45,6 @@ class BineryTree{
     return root;
   }
 
-
 search(int value){
 return searchval(root, value);
 }
