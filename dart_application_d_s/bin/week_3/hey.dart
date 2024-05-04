@@ -1,135 +1,18 @@
-
-import 'dart:ffi';
-
-import '../week_1/binery_search/binery.dart';
-
-class Node{
-  var value;
-  Node? left;
-  Node? right;
-  Node(this.value);
+class TreeNode{
+  late  Map<int,TreeNode> children = {};
+  late  bool isEndOfWord = false;
 }
 
-class BineryTree{
-  Node? root;
-  insert(int value){
-    root = insertval(root,value);
-  }
-  Node? insertval(Node? root,int value){
-    if(root== null){
-      return Node(value);
-    }
-    if(value<root.value){
-      root.left = insertval(root.left, value);
-    }else if(value>root.value){
-      root.right = insertval(root.right, value);
-    }
-    return root;
-  }
+class Trie{
+  late TreeNode root;
 
-
-
-  dis(Node? node){
-    if(node!=null){
-      dis(node.left);
-      print(node.value);
-      dis(node.right);
+  Trie(){
+    root = TreeNode();
+  }
+  insert(String word){
+    TreeNode temp = root;
+    for( int i=0;i<word.length;i++){
+      String char = word[i];
     }
   }
-
-  delete(int value){
-    root = deleteval(root,value);
-  }
-  Node? deleteval(Node? root, int value){
-    if(root==null){
-      return root;
-    }
-    if(value<root.value){
-      root.left = deleteval(root.left, value);
-    }else if(value>root.value){
-      root.right = deleteval(root.right, value);
-    }else{
-      if(root.left== null){
-        return deleteval(root.right, value);
-      }else if(root.right == null){
-        return deleteval(root.left, value);
-      }
-    }
-    return root;
-  }
-
-  bool isBST(){
-    int? prev;
-    bool isBSTval( Node? node){
-      if(node== null) return true;
-      if(!isBSTval(node.left)) return false;
-      if(prev!= null&& prev!>=node.value) return false;
-      prev = node.value;
-      return isBSTval(node.right);
-    }
-    return isBSTval(root);
-  }
-
-  search(int value){
-    return searchval(root, value);
-  }
-  Node? searchval(Node? node, int value){
-    if(node== null||node.value == value){
-      return node;
-    }
-    if(value<node.value){
-      return searchval(node.left, value);
-    }else if(value>node.value){
-      return searchval(node.right, value);
-    }
-  }
-
-  largest(Node? node){
-    while(node!.left!= null){
-      node = node.left;
-    }
-    return node.value;
-  }
-  smallest(Node? node){
-    while(node!.right!= null){
-      node = node.right;
-    }
-    return node.value;
-  }
-  find2ndlargest(Node? node){
-    if(node!.right == null&& node.left!=null){
-      return largest(node.left);
-    }
-    if(node.right!=null&&node.right!.left== null&& node.right!.right==null){
-     return node.value;
-    }
-     return find2ndlargest(node.right);
-  }
-  
-}
-void main(){
-BineryTree value = BineryTree();
-value.insert(1);
-value.insert(2);
-value.insert(3);
-value.delete(1);
-bool isBSTval=value.isBST();
-if(isBSTval!=null){
-  print(' is the tree BST? $isBSTval');
-}else{
-  print('no values found');
-}
-Node? searchval = value.search(2);
-if(searchval!=null){
-  print('values ${searchval.value} is founded at the BST');
-}else{
-  print(' no datas match ');
-}
-int largest =value.find2ndlargest(value.root);
-if(largest!=null){
-  print('largest $largest');
-}else{
-  print('no values found');
-}
-value.dis(value.root);
 }

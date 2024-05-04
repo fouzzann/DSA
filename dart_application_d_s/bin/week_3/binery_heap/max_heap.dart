@@ -5,7 +5,7 @@ class Minheap{
     heap[i] = heap[j];
     heap[j] = temp;
   } 
- 
+  
  heapyfyup(int index){
   int parant = (index - 1)~/2;
   while(index>0&& heap[index]>heap[parant]){

@@ -4,34 +4,34 @@ class TrieNode {
 }
 
 class Trie {
-  late TrieNode _root;
+  late TrieNode root;
 
   Trie() {
-    _root = TrieNode();
+    root = TrieNode();
   }
 
   void insert(String word) {
-    TrieNode current = _root;
+    TrieNode temp = root;
     for (int i = 0; i < word.length; i++) {
       String char = word[i];
-      if (!current.children.containsKey(char)) {
-        current.children[char] = TrieNode();
+      if (!temp.children.containsKey(char)) {
+        temp.children[char] = TrieNode();
       }
-      current = current.children[char]!;
+      temp = temp.children[char]!;
     }
-    current.isEndOfWord = true;
+    temp.isEndOfWord = true;
   }
 
   bool search(String word) {
-    TrieNode current = _root;
+    TrieNode temp = root;
     for (int i = 0; i < word.length; i++) {
       String char = word[i];
-      if (!current.children.containsKey(char)) {
+      if (!temp.children.containsKey(char)) {
         return false;
       }
-      current = current.children[char]!;
+      temp = temp.children[char]!;
     }
-    return current.isEndOfWord;
+    return temp.isEndOfWord;
   }
 
   bool _isEmptyNode(TrieNode node) {
@@ -65,7 +65,7 @@ class Trie {
 
   void delete(String word) {
     if (word.isEmpty) return;
-    _deleteHelper(_root, word, 0);
+    _deleteHelper(root, word, 0);
   }
 }
 
