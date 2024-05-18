@@ -23,7 +23,7 @@ class Minheap{
  heapyfydown(int index){
     int smallest = index;
     int leftchild = 2* index +1;
-    int rightchild = 2* index +1;
+    int rightchild = 2* index +2;
     if(leftchild<heap.length&& heap[leftchild]<heap[rightchild]){
       smallest = leftchild;
     }
@@ -43,12 +43,14 @@ class Minheap{
     heapyfydown(index);
   }
   dispay(){
-    print('heap elemnts are $heap');
+    for( int i=0;i<heap.length;i++){
+      print(heap[i]);
+    }
     
   }
 
 }
- 
+
 
   main(){
     Minheap value= Minheap();
@@ -56,6 +58,5 @@ class Minheap{
     value.inst(2); 
     value.inst(3);
     value.inst(4);
-    value.delete(1);
     value.dispay();
   }     

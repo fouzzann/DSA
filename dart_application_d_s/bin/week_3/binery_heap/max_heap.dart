@@ -1,5 +1,5 @@
-class Minheap{
-  late List<int> heap = [];
+class Maxheap{
+  List<int> heap = [];
   swap(int i, int j){
     int temp = heap[i];
     heap[i] = heap[j];
@@ -18,13 +18,15 @@ class Minheap{
  heapyfydown(int index){
     int smallest = index;
     int leftchild = 2* index +1;
-    int rightchild = 2* index +1;
+    int rightchild = 2* index +2;
     if(leftchild<heap.length&& heap[leftchild]>heap[rightchild]){
       smallest = leftchild;
     }
+
     if(rightchild<heap.length&&heap[rightchild]>heap[leftchild]){
       smallest = rightchild;
     }
+
     if(smallest!=index){
       swap(index, smallest);
       heapyfydown(smallest);
@@ -43,18 +45,21 @@ class Minheap{
     heapyfydown(index);
   }
   dispay(){
-    print('heap elemnts are $heap');
+   for( int i=0;i<heap.length;i++){
+    print(heap[i]);
+   }
+    
   }
 
 }
- 
+
 
   main(){
-    Minheap value= Minheap();
+    Maxheap value= Maxheap();
     value.insert(1);
     value.insert(2);
     value.insert(3);
     value.insert(4);
-    value.delete(1);
+    value.insert(5);
     value.dispay();
   }
